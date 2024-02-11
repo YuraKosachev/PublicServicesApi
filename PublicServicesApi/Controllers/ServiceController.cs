@@ -9,7 +9,7 @@ using System.Net;
 namespace PublicServicesApi.Controllers
 {
     /// <summary>
-    /// Service Controller
+    /// Public services Controller
     /// </summary>
     [Route("api")]
     [ApiController]
@@ -28,7 +28,7 @@ namespace PublicServicesApi.Controllers
         /// <summary>
         /// Get flat information
         /// </summary>
-        /// <remarks>Awesomeness!</remarks>
+        /// <remarks>Somethings about this endpoints</remarks>
         /// <param name="cadNumber" example="77:07:0000000:1277">Cadastral number</param>
         /// <param name="index" example="1">Page index</param>
         /// <param name="elemPerPage" example="20">Elements per page</param>

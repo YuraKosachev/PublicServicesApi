@@ -12,13 +12,14 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PublicServicesApi.Core.Exceptions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PublicServicesApi.Provider.ApiProviders
 {
     public class ApiServicesProvider: PublicServiceApiClientProvider<SearchRequest, SearchInfoResponse>, IApiServicesProvider
     {
 
-        private readonly ApiServicesConfiguration _configuration;
+        private readonly ApiServicesConfiguration? _configuration;
         public ApiServicesProvider(IOptions<ApiServicesConfiguration> configuration)
         {
             _configuration = configuration?.Value;
@@ -35,11 +36,6 @@ namespace PublicServicesApi.Provider.ApiProviders
             request.AddParameter("pageIndex", model.PageIndex, ParameterType.QueryString);
             request.AddParameter("elementsPerPage", model.ElementsPerPage, ParameterType.QueryString);
             request.AddBody(model.FlatInfo, ContentType.Json);
-        }
-        protected override void ExceptionHandling(RestResponse response)
-        {
-            if (response.StatusCode == 0)
-                throw new ApiServiceException(response?.Content ?? $"Don't have contents {_configuration?.PublicService?.SearchFlatInfoService?.Resource}");
         }
     }
 }

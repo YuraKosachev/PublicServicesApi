@@ -31,12 +31,9 @@ namespace PublicServicesApi.Provider.ApiProviders
         {
             base.SetRequestParams(request, model);
 
-            //request.AddHeader("Content-Type", "application/json");
-
             request.AddParameter("pageIndex", model.PageIndex, ParameterType.QueryString);
             request.AddParameter("elementsPerPage", model.ElementsPerPage, ParameterType.QueryString);
-            //var json = JsonConvert.SerializeObject(model.FlatInfo);
-            request.AddBody(model.FlatInfo, ContentType.Json);//.AddParameter("data", json, ParameterType.RequestBody);
+            request.AddBody(model.FlatInfo, ContentType.Json);
         }
     }
 }

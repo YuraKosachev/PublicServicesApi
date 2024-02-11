@@ -10,6 +10,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["PublicServicesApi/PublicServicesApi.csproj", "PublicServicesApi/"]
+COPY ["PublicServicesApi.Core/PublicServicesApi.Core.csproj", "PublicServicesApi.Core/"]
+COPY ["PublicServicesApi.Provider/PublicServicesApi.Provider.csproj", "PublicServicesApi.Provider/"]
+COPY ["PublicServicesApi.Services/PublicServicesApi.Service.csproj", "PublicServicesApi.Services/"]
 RUN dotnet restore "./PublicServicesApi/./PublicServicesApi.csproj"
 COPY . .
 WORKDIR "/src/PublicServicesApi"

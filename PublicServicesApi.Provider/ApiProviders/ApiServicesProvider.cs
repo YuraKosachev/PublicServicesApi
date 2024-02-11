@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using PublicServicesApi.Core.Exceptions;
 
 namespace PublicServicesApi.Provider.ApiProviders
 {
@@ -34,6 +35,11 @@ namespace PublicServicesApi.Provider.ApiProviders
             request.AddParameter("pageIndex", model.PageIndex, ParameterType.QueryString);
             request.AddParameter("elementsPerPage", model.ElementsPerPage, ParameterType.QueryString);
             request.AddBody(model.FlatInfo, ContentType.Json);
+        }
+        protected override void ExceptionHandling(RestResponse response)
+        {
+            if (response.StatusCode == 0)
+                throw new ApiServiceException(response?.Content ?? $"Don't have contents {_configuration?.PublicService?.SearchFlatInfoService?.Resource}");
         }
     }
 }

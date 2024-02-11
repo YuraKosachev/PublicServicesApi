@@ -1,0 +1,8 @@
+﻿version: "3.8"
+services:
+  app:
+    build: .
+    container_name: web_api
+    command: ENTRYPOINT ["dotnet", "PublicServicesApi.dll"]
+    ports:
+      - 5356:8000

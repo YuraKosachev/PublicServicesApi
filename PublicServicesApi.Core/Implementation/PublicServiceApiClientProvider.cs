@@ -14,7 +14,7 @@ namespace PublicServicesApi.Core.Implementation
         protected override void ExceptionHandling(RestResponse response)
         {
             if(response.StatusCode == 0)
-                throw new ApiServiceException(response?.Content ?? "Don't have contents");
+                throw new ApiServiceException(response?.Content ?? $"Don't have contents {response?.ResponseUri?.AbsoluteUri}");
         }
     }
 }

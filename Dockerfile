@@ -25,4 +25,4 @@ RUN dotnet publish "./PublicServicesApi.csproj" -c $BUILD_CONFIGURATION -o /app/
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "PublicServicesApi.dll"]
+ENTRYPOINT ["dotnet", "PublicServicesApi.dll", "--launch-profile Docker"]
